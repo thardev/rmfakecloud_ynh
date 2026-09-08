@@ -1,0 +1,72 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/config_panel.v1.schema.json
+
+version = "1.0"
+
+[main]
+name = "Main Settings"
+services = ["__APP__"]
+
+    [main.email]
+    name = "Email settings"
+
+        [main.email.smtp_server]
+        ask = "SMTP server address in host:port format"
+        type = "string"
+        bind = "RM_SMTP_SERVER:__INSTALL_DIR__/rmfakecloud.conf"
+
+        [main.email.smtp_username]
+        ask = "Username/email for login"
+        type = "string"
+        bind = "RM_SMTP_USERNAME:__INSTALL_DIR__/rmfakecloud.conf"
+
+        [main.email.smtp_password]
+        ask = "Plaintext password (application password should work)"
+        type = "string"
+        bind = "RM_SMTP_PASSWORD:__INSTALL_DIR__/rmfakecloud.conf"
+
+        [main.email.smtp_from]
+        ask = "Custom From: header for the mails"
+        type = "string"
+        help = "If this override is set, the user's email address is instead put as Reply-To"
+        bind = "RM_SMTP_FROM:__INSTALL_DIR__/rmfakecloud.conf"
+
+        [main.email.smtp_helo]
+        ask = "Custom HELO, if your email provider needs it"
+        type = "string"
+        bind = "RM_SMTP_HELO:__INSTALL_DIR__/rmfakecloud.conf"
+
+    [main.handwriting]
+    name = "Handwriting recognition settings"
+
+        [main.handwriting.hwr_appkey]
+        ask = "Application key obtained from myscript"
+        type = "string"
+        help = "If allowed, '!wa set-relay' can be used to turn any Bridge User into a RelayBot for that chat. This allows people to talk on WhatsApp without an own account."
+        bind = "RMAPI_HWR_APPLICATIONKEY:__INSTALL_DIR__/rmfakecloud.conf"
+
+        [main.handwriting.hwr_hmac]
+        ask = "HMAC obtained from myscript"
+        type = "string"
+        help = "See User management -> Admins"
+        bind = "RMAPI_HWR_HMAC:__INSTALL_DIR__/rmfakecloud.conf"
+
+        [main.handwriting.hwr_lang_override]
+        ask = "Handwriting recognition language"
+        type = "string"
+        help = "Optional: Use this if you want your handwriting to be recognized as a different language. This variable accepts a locale code (e.g., zh_CN). Refer to https://app-support.myscript.com/support/solutions/articles/16000086001-supported-languages for supported languages."
+        bind = "RMAPI_HWR_LANG_OVERRIDE:__INSTALL_DIR__/rmfakecloud.conf"
+
+        [main.handwriting.hwr_host]
+        ask = "Custom myScript host URL"
+        type = "string"
+        help = "Optional: Custom myScript host URL (default: https://cloud.myscript.com). Supports http/https and custom ports."
+        bind = "RMAPI_HWR_HOST:__INSTALL_DIR__/rmfakecloud.conf"
+
+    [main.screen_sharing]
+    name = "Screen sharing settings"
+
+        [main.screen_sharing.ice_servers]
+        ask = "JSON array of WebRTC ICE servers"
+        type = "string"
+        help = "Default: Google STUN server. Format: [{"urls":["stun:stun.l.google.com:19302"]}] or with TURN: [{"urls":["turn:turn.example.com:3478"],"username":"user","credential":"pass"}]"
+        bind = "ICE_SERVERS:__INSTALL_DIR__/config.yaml"

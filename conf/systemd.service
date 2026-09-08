@@ -1,5 +1,5 @@
 [Unit]
-Description=rmfakecloud service
+Description=RMFakecloud is a clone of the cloud sync for the Remarkable tablet
 After=network.target
 
 [Service]
@@ -7,7 +7,7 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-EnvironmentFile=__INSTALL_DIR__/.env
+EnvironmentFile=__INSTALL_DIR__/rmfakecloud.conf
 ExecStart=__INSTALL_DIR__/rmfakecloud
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit

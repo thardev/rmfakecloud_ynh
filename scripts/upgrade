@@ -27,7 +27,7 @@ chmod +x $install_dir/rmfakecloud
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
-ynh_config_add --template=".env" --destination="$install_dir/.env"
+ynh_config_add --template="rmfakecloud.conf" --destination="$install_dir/rmfakecloud.conf"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
@@ -41,6 +41,8 @@ ynh_config_add_systemd
 yunohost service add "$app" --description="$app's service" --log="/var/log/$app/$app.log"
 
 ynh_config_add_logrotate
+
+ynh_config_add_fail2ban --logpath="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
