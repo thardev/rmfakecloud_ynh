@@ -27,7 +27,7 @@ chmod +x $install_dir/rmfakecloud
 #=================================================
 ynh_script_progression "Updating $app's configuration files..."
 
-ynh_config_add --template="rmfakecloud.conf" --destination="$install_dir/rmfakecloud.conf"
+ynh_config_add --template=".env" --destination="$install_dir/.env"
 
 #=================================================
 # REAPPLY SYSTEM CONFIGURATIONS
