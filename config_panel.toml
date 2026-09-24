@@ -68,5 +68,5 @@ services = ["__APP__"]
         [main.screen_sharing.ice_servers]
         ask = "JSON array of WebRTC ICE servers"
         type = "string"
-        help = "Default: Google STUN server. Format: [{"urls":["stun:stun.l.google.com:19302"]}] or with TURN: [{"urls":["turn:turn.example.com:3478"],"username":"user","credential":"pass"}]"
+        help = "Default: Google STUN server. Format: [{\"urls\":[\"stun:stun.l.google.com:19302\"]}] or with TURN: [{\"urls\":[\"turn:turn.example.com:3478\"],\"username\":\"user\",\"credential\":\"pass\"}]"
         bind = "ICE_SERVERS:__INSTALL_DIR__/config.yaml"
